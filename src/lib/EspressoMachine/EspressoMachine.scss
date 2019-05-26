@@ -1,0 +1,129 @@
+
+.espresso-machine {
+    --container-width: 500px;
+    --container-height: 500px;
+    // --background: linear-gradient(90deg, #a37351, #c09b80);
+    --body: #333;
+    --grate: #555;
+    --metal: #bfbfbf;
+    --siding: black;
+    --logo: red;
+    --cup: orange;
+    --leg: #444;
+    --top-width: 60%; //!!! CHANGE THIS ONLY
+    --top-height: 15%; //!!! CHANGE THIS ONLY
+    // --top-vertical-offset: 20%;
+   
+    --top-horizontal-offset: 20%;
+    // almost everything else is calculated off the top section
+    --middle-height: 20%;
+    --bottom-height: 10%;
+    --grate-height: 5%;
+    --cup-height: 3%;
+    --total-height: calc(var(--top-height) + var(--middle-height) + var(--bottom-height) + var(--grate-height) + var(--cup-height));
+     --top-vertical-offset: calc( (100% - var(--total-height))/2);
+    --middle-width:  calc(var(--top-width) - 10%);
+    --grate-width: calc(var(--top-width) - 2%);
+    --grate-vertical-offset: calc(var(--top-vertical-offset) - var(--grate-height));
+    --middle-vertical-offset: calc(var(--top-vertical-offset) + var(--top-height));
+  
+    --bottom-vertical-offset: calc(var(--middle-vertical-offset) + var(--middle-height));
+    --leg-vertical-offset: calc(var(--bottom-vertical-offset) + var(--bottom-height));
+    --third-floor: 3;
+    --second-floor: 2;
+    --first-floor: 1;
+    --basement: -1;
+  
+    --bottom-width: calc(var(--top-width) - 5%);
+    width: var(--container-width);
+    height: var(--container-height);
+    background: var(--background);
+    border-radius: 10%;
+    position: relative;
+    * {
+      position: absolute;
+      background-color: var(--metal);
+    }
+    .top  {
+      top: var(--top-vertical-offset);
+      left: calc((100% - var(--top-width))/2); //center
+      width: var(--top-width);
+      height: var(--top-height);
+      box-shadow: 0px 2px 0px 0px var(--body);
+      z-index: var(--third-floor);
+      .logo {
+        position: absolute;
+        color: red;
+        top: 35%;
+        left: 10%;
+        height: 10%;
+        width: 20%;
+        background-color: var(--logo);
+      }
+    }
+    .middle {
+      width: var(--middle-width);
+      height: var(--middle-height);
+      left: calc((100% - var(--middle-width))/2); //center
+      top: var(--middle-vertical-offset);
+    } 
+    .bottom { 
+      
+      width: var(--bottom-width);
+      height: var(--bottom-height);
+      top: var(--bottom-vertical-offset);
+      left: calc((100% - var(--bottom-width))/2);
+      z-index: var(--third-floor);
+      box-shadow: 0px -2px 0px 0px var(--body),  0px 0px 2px 0px var(--body);
+     
+  
+    }
+    .metal-grate {
+      background-color: var(--grate);
+      width: var(--grate-width);
+      height: var(--grate-height);
+      top: var(--grate-vertical-offset);
+      left: calc((100% - var(--grate-width))/2);
+      z-index: var(--third-floor);
+    }
+    .leg {
+      top: var(--leg-vertical-offset);
+      background-color: var(--leg);
+      width: 5%;
+      height: 8%;
+      z-index: var(--first-floor);
+      &.left {
+       left: calc((100% - var(--bottom-width))/2);
+      }
+      &.right {
+       right: calc((100% - var(--bottom-width))/2);
+      }
+    }
+    .cup {
+      background-color: var(--cup);
+      height: var(--cup-height);
+      width: 6%;
+      top: calc(var(--grate-vertical-offset) - var(--cup-height));
+      left: 25%;
+      border-radius: 30% 30% 0 0;
+      z-index: -10;
+      z-index: var(--first-floor);
+      &.cup-1 {
+        left: 25%;
+      }
+      &.cup-2 {
+        left: 42%;
+      }
+      &.cup-3 {
+        left: 60%;
+      }
+    }
+    
+    
+    
+  }
+  
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+  }
